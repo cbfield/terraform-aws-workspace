@@ -38,7 +38,7 @@ provider "aws" {
   alias  = "networking"
   region = "us-east-1"
   assume_role {
-    role_arn    = "arn:aws:iam::${var.AWS_ACCOUNT_ID_NETWORKING}:role/dns-${var.AWS_ACCOUNT_ID}"
+    role_arn    = "arn:aws:iam::${var.AWS_ACCOUNT_ID_NETWORKING}:${var.TF_ROLE ? "role" : "user"}/dns-${var.AWS_ACCOUNT_ID}"
     external_id = var.AWS_EXTERNAL_ID_NETWORKING
   }
 }
