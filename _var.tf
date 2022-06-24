@@ -18,7 +18,7 @@ variable "aws_ou_id" {
 variable "aws_provider" {
   description = <<-EOF
     Configurations for IAM roles used by AWS providers. Use the keys `default`,
-    `logging`, and `networking` to overwrite corresponding provider configurations
+    `logging`, and `network` to overwrite corresponding provider configurations
   EOF
   type = map(object({
     account_id = optional(string)

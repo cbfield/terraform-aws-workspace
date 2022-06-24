@@ -61,7 +61,7 @@ aws_provider = {
 | <a name="input_aws_account_id"></a> [aws\_account\_id](#input\_aws\_account\_id) | The AWS Account ID of the AWS account used by the default AWS provider | `string` | n/a | yes |
 | <a name="input_aws_org_id"></a> [aws\_org\_id](#input\_aws\_org\_id) | The AWS Organization ID of the AWS account used by the default AWS provider | `string` | `"o-000000"` | no |
 | <a name="input_aws_ou_id"></a> [aws\_ou\_id](#input\_aws\_ou\_id) | The AWS Organizational Unit ID of the AWS account used by the default AWS provider | `string` | `"ou-000000"` | no |
-| <a name="input_aws_provider"></a> [aws\_provider](#input\_aws\_provider) | Configurations for IAM roles used by AWS providers. Use the keys `default`,<br>`logging`, and `networking` to overwrite corresponding provider configurations | <pre>map(object({<br>    account_id = optional(string)<br>    region     = optional(string)<br>    role_name  = optional(string)<br>    role_path  = optional(string)<br>  }))</pre> | `{}` | no |
+| <a name="input_aws_provider"></a> [aws\_provider](#input\_aws\_provider) | Configurations for IAM roles used by AWS providers. Use the keys `default`,<br>`logging`, and `network` to overwrite corresponding provider configurations | <pre>map(object({<br>    account_id = optional(string)<br>    region     = optional(string)<br>    role_name  = optional(string)<br>    role_path  = optional(string)<br>  }))</pre> | `{}` | no |
 
 ## Outputs
 
