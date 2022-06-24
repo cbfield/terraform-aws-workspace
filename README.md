@@ -1,6 +1,6 @@
-# Application Stack Infrastructure
+# AWS Workspace
 
-This workspace is meant to manage the infrastructure for a single, atomic application stack. 
+This is a template for a Terraform Cloud/ Enterprise workspace that primarily manages AWS resources.
 
 ## Initialization
 
