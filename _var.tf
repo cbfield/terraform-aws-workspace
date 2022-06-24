@@ -1,56 +1,30 @@
-variable "AWS_ACCOUNT_ID" {
-  description = "Unique identifer of the AWS Account containing this infrastructure"
+variable "aws_account_id" {
+  description = "The AWS Account ID of the AWS account used by the default AWS provider"
   type        = string
 }
 
-variable "AWS_ACCOUNT_ID_NETWORKING" {
-  description = "Unique identifer of the AWS Account containing the DNS records used by this infrastructure"
+variable "aws_org_id" {
+  description = "The AWS Organization ID of the AWS account used by the default AWS provider"
   type        = string
+  default     = "o-000000"
 }
 
-variable "AWS_EXTERNAL_ID" {
-  description = "External ID used to assume Standard AWS IAM role in provider statements"
-  type        = string
-  default     = "000000"
-}
-
-variable "AWS_EXTERNAL_ID_NETWORKING" {
-  description = "External ID used to assume Networking AWS IAM role in provider statements"
-  type        = string
-  default     = "000000"
-}
-
-variable "AWS_OU_ID" {
-  description = "Unique identifer of the AWS Organizations Organizational Unit containing this infrastructure"
+variable "aws_ou_id" {
+  description = "The AWS Organizational Unit ID of the AWS account used by the default AWS provider"
   type        = string
   default     = "ou-000000"
 }
 
-variable "ENVIRONMENT" {
-  description = "The staging environment containing this infrastructure (dev, pre-prod, prod, etc)"
-  type        = string
-  default     = "dev"
-}
-
-variable "TF_ADDRESS" {
-  description = "The address of the backend for this workspace"
-  type        = string
-  default     = "app.terraform.io"
-}
-
-variable "TF_ORG" {
-  description = "The Terraform Cloud/ Enterprise Organization containing the workspace that manages this Terraform configuration"
-  type        = string
-}
-
-variable "TF_ROLE" {
-  description = "If true, providers use IAM roles, rather than IAM users"
-  type        = bool
-  default     = true
-}
-
-variable "TF_WORKSPACE" {
-  description = "The Terraform Cloud/ Enterprise Workspace that manages this Terraform configuration"
-  type        = string
-  default     = "main"
+variable "aws_provider" {
+  description = <<-EOF
+    Configurations for IAM roles used by AWS providers. Use the keys `default`,
+    `logging`, and `networking` to overwrite corresponding provider configurations
+  EOF
+  type = map(object({
+    account_id = optional(string)
+    region     = optional(string)
+    role_name  = optional(string)
+    role_path  = optional(string)
+  }))
+  default = {}
 }
