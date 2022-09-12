@@ -3,12 +3,6 @@ variable "aws_account_id" {
   type        = string
 }
 
-variable "aws_org_id" {
-  description = "The AWS Organization ID of the AWS account used by the default AWS provider"
-  type        = string
-  default     = "o-000000"
-}
-
 variable "aws_ou_id" {
   description = "The AWS Organizational Unit ID of the AWS account used by the default AWS provider"
   type        = string

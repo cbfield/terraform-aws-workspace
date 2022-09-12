@@ -8,11 +8,6 @@ output "aws_caller_identity" {
   value       = data.aws_caller_identity.current
 }
 
-output "aws_org_id" {
-  description = "The value provided for var.aws_org_id"
-  value       = var.aws_org_id
-}
-
 output "aws_ou_id" {
   description = "The value provided for var.aws_ou_id"
   value       = var.aws_ou_id
