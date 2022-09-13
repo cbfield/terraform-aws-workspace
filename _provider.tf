@@ -5,6 +5,11 @@ provider "aws" {
     role_arn     = local.aws_provider["default"].role_arn
     session_name = "terraform-${var.aws_account_id}"
   }
+  default_tags {
+    tags = {
+      "Managed By Terraform" = "true"
+    }
+  }
 }
 
 provider "aws" {
@@ -14,6 +19,11 @@ provider "aws" {
     external_id  = var.aws_account_id
     role_arn     = local.aws_provider["default"].role_arn
     session_name = "terraform-${var.aws_account_id}"
+  }
+  default_tags {
+    tags = {
+      "Managed By Terraform" = "true"
+    }
   }
 }
 
@@ -25,6 +35,11 @@ provider "aws" {
     role_arn     = local.aws_provider["default"].role_arn
     session_name = "terraform-${var.aws_account_id}"
   }
+  default_tags {
+    tags = {
+      "Managed By Terraform" = "true"
+    }
+  }
 }
 
 provider "aws" {
@@ -34,6 +49,11 @@ provider "aws" {
     external_id  = var.aws_account_id
     role_arn     = local.aws_provider["default"].role_arn
     session_name = "terraform-${var.aws_account_id}"
+  }
+  default_tags {
+    tags = {
+      "Managed By Terraform" = "true"
+    }
   }
 }
 
@@ -45,6 +65,11 @@ provider "aws" {
     role_arn     = local.aws_provider["default"].role_arn
     session_name = "terraform-${var.aws_account_id}"
   }
+  default_tags {
+    tags = {
+      "Managed By Terraform" = "true"
+    }
+  }
 }
 
 provider "aws" {
@@ -55,6 +80,11 @@ provider "aws" {
     role_arn     = local.aws_provider["logging"].role_arn
     session_name = "terraform-${var.aws_account_id}"
   }
+  default_tags {
+    tags = {
+      "Managed By Terraform" = "true"
+    }
+  }
 }
 
 provider "aws" {
@@ -64,5 +94,10 @@ provider "aws" {
     external_id  = var.aws_account_id
     role_arn     = local.aws_provider["network"].role_arn
     session_name = "terraform-${var.aws_account_id}"
+  }
+  default_tags {
+    tags = {
+      "Managed By Terraform" = "true"
+    }
   }
 }
