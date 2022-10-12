@@ -1,68 +1,28 @@
 provider "aws" {
-  region = local.aws_provider["default"].region
-  assume_role {
-    external_id  = var.aws_account_id
-    role_arn     = local.aws_provider["default"].role_arn
-    session_name = "terraform-${var.aws_account_id}"
-  }
-}
-
-provider "aws" {
-  alias  = "virginia"
-  region = "us-east-1"
-  assume_role {
-    external_id  = var.aws_account_id
-    role_arn     = local.aws_provider["default"].role_arn
-    session_name = "terraform-${var.aws_account_id}"
-  }
-}
-
-provider "aws" {
-  alias  = "ohio"
-  region = "us-east-2"
-  assume_role {
-    external_id  = var.aws_account_id
-    role_arn     = local.aws_provider["default"].role_arn
-    session_name = "terraform-${var.aws_account_id}"
-  }
-}
-
-provider "aws" {
-  alias  = "california"
-  region = "us-west-1"
-  assume_role {
-    external_id  = var.aws_account_id
-    role_arn     = local.aws_provider["default"].role_arn
-    session_name = "terraform-${var.aws_account_id}"
-  }
-}
-
-provider "aws" {
-  alias  = "oregon"
   region = "us-west-2"
   assume_role {
     external_id  = var.aws_account_id
-    role_arn     = local.aws_provider["default"].role_arn
+    role_arn     = "arn:aws:iam::${var.aws_account_id}:role/terraform"
     session_name = "terraform-${var.aws_account_id}"
   }
 }
 
 provider "aws" {
   alias  = "logging"
-  region = local.aws_provider["logging"].region
+  region = "us-west-2"
   assume_role {
     external_id  = var.aws_account_id
-    role_arn     = local.aws_provider["logging"].role_arn
+    role_arn     = "arn:aws:iam::${var.aws_account_id_logging}:role/org/logs-${var.aws_account_id}"
     session_name = "terraform-${var.aws_account_id}"
   }
 }
 
 provider "aws" {
   alias  = "network"
-  region = local.aws_provider["network"].region
+  region = "us-west-2"
   assume_role {
     external_id  = var.aws_account_id
-    role_arn     = local.aws_provider["network"].role_arn
+    role_arn     = "arn:aws:iam::${var.aws_account_id_network}:role/org/network-${var.aws_account_id}"
     session_name = "terraform-${var.aws_account_id}"
   }
 }
