@@ -2,38 +2,6 @@
 
 This is a template for a Terraform Cloud/ Enterprise workspace that primarily manages AWS resources.
 
-## Initialization
-
-This workspace initializes AWS providers as described below. The only piece of information required for this is the ID of the AWS account that this workspace is meant to interact with. The value for that is provided with the variable `var.aws_account_id`.
-
-If you also wish to run local operations like imports, you will need to update the cloud configuration in the `_config.tf` file with the organization and workspace to use (lines 3 and 5). This would have been handled with variables, but alas these configurations do not accept interpolated values.
-
-## Providers
-
-This workspace will be initialized with seven providers, using a total of three AWS IAM roles.
-
-Five of these providers use the same, `default` IAM role. One is the default provider, and the remaining four use the same role in specific geographic regions (us-east-1, us-east-2, us-west-1, us-west-2).
-
-The remaining two providers, `logging` and `network`, are meant to be used to reach into other AWS accounts. This is done to conform with AWS best practices, which recommend using dedicated AWS accounts for each of logging and networking.
-
-By default, all providers will use the same AWS IAM role, which uses the arn:
-```hcl
-"arn:aws:iam::${var.aws_account_id}:role/service/terraform"
-```
-
-This behavior can be overwritten using the variable `var.aws_provider`, like so:
-```hcl
-aws_provider = {
-  network = {
-    account_id = "111222333444"
-    region     = "us-east-1"
-    role_name  = "terraform-cloud"
-    role_path  = "/service/"
-  }
-  ... ( values for other keys [default, logging, network] )
-}
-```
-
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
